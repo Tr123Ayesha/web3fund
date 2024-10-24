@@ -15,9 +15,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import Dashboard from '../../pages/dashboard';
-import Referral from '../../pages/referrals';
 import dash from '../../assets/dashboard.svg';
 import web3Logo from "../../assets/web3Logo.svg";
 import profile from '../../assets/profile.svg';
@@ -33,11 +30,11 @@ import Notification from '../../assets/Notification.svg';
 import image from '../../assets/image.svg';
 import logout from '../../assets/logout.svg';
 import './sidebar.css';
-
+import { useMediaQuery } from '@mui/material';
 const drawerWidth = 264;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
+  ({ theme, open, isSmallScreen }) => ({
     flexGrow: 1,
     height: "100%",
     overflowX: "hidden",
@@ -46,7 +43,8 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: `-${drawerWidth}px`,
+    // Only apply margin-left when it's not a small screen
+    marginLeft: isSmallScreen ? 0 : `-${drawerWidth}px`,
     ...(open && {
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
@@ -57,6 +55,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     }),
   })
 );
+
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -112,10 +111,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft({children}) {
   const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [selectedGeneralIndex, setSelectedGeneralIndex] = React.useState(null); // State for General Menu
   const [selectedOtherIndex, setSelectedOtherIndex] = React.useState(null); // State for Other Menu
   const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate();
+  
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -200,9 +200,10 @@ export default function PersistentDrawerLeft({children}) {
             boxSizing: 'border-box',
           },
         }}
-        variant="persistent"
+        variant={isSmallScreen ? 'temporary' : 'persistent'} // Conditional variant
         anchor="left"
         open={open}
+        onClose={handleDrawerClose}
       >
         <div className="SidebarContainer"> 
           <DrawerHeader>
@@ -294,7 +295,7 @@ export default function PersistentDrawerLeft({children}) {
           </div>
         </div>
       </Drawer>
-      <Main open={open} sx={{ backgroundColor: "#F9F9FC", width: "100%" }}>
+      <Main open={open}  isSmallScreen={isSmallScreen} sx={{ backgroundColor: "#F9F9FC", width: "100%", marginTop:" 38px" }}>
         {children}
        
       </Main>

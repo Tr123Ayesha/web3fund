@@ -1,6 +1,7 @@
 .header{
     display: flex;
     flex-direction: column;
+    margin-top: 32px;
  
 }
 .Web3dashboard{
@@ -80,28 +81,39 @@ margin-right: 25px;
     margin-bottom: 24px;
 }
 .claimProfit{
+  width: 100%;
     border-radius: 8px;
     height: 48px;
     background-color: #0F68FF;
     color: #FFFFFF;
-    padding: 15px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px;
     border: none;
     font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 600;
     line-height: 18.2px;
+    text-align: center;
 }
 .buyNft{
+  width: 100%;
     border-radius: 8px;
     height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     background-color:#FFFFFF ;
     color:#0F68FF ;
-    padding: 15px 43px;
+    padding: 15px 0px;
     border:1px solid #0F68FF;
     font-family: 'Montserrat';
     font-size: 14px;
     font-weight: 600;
     line-height: 18.2px;
+    text-align: center;
 }
 .infodiv{
     display: flex;
@@ -133,12 +145,14 @@ margin-right: 25px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
+    gap: 30px;
   
 }
 .webNftsdiv2{
     margin-top: 0;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .mywebnft{
     font-family: 'Montserrat';
@@ -170,6 +184,7 @@ margin-right: 25px;
     font-size: 14px;
     font-weight: 600;
     line-height: 18.2px;
+    width: 60%;
 }
 .nftCards{
     display: flex;
@@ -239,6 +254,7 @@ margin-right: 25px;
     font-weight: 500;
     color: #667085;             
     display: flex;              
+    justify-content: center;
     align-items: center;
     cursor: pointer;
   }
@@ -301,6 +317,9 @@ margin-right: 25px;
     margin-top: 32px;
     border-radius: 20px;
 
+}
+.css-7u8sr8-MuiButtonBase-root-MuiButton-root{
+  padding:7px 7px !important;
 }
 .Status{
     background-color: rgba(79, 190, 136, 0.12);
@@ -375,9 +394,36 @@ margin-right: 25px;
     .tableHeader{
       display: flex;
       flex-direction: column;
-      align-items: center;
+      
 
     }
+ }
+ @media (max-width:856px){
+  .div2header {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+   
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 30px;
+    flex-direction: column;
+}
+.BUYnft{
+  margin-top: 11px;
+  margin-bottom: 11px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  height: 34px;
+  background-color: #0F68FF;
+  color: #FFFFFF;
+  border: none;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18.2px;
+  width: 100%;
+}
  }
  @media  (max-width: 411px) {
     .part2{
@@ -441,7 +487,7 @@ margin-right: 25px;
       margin-top: 0;
   }
   .graphHeader{
-    align-items: center;
+    /* align-items: center; */
     display: flex;
     flex-direction: column;
    gap: 10px;
@@ -449,8 +495,8 @@ margin-right: 25px;
   .para{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    /* align-items: center;
+    text-align: center; */
   }
   .Graphcalc{
     display: flex;
@@ -461,7 +507,7 @@ margin-right: 25px;
   .tableHeader{
     display: flex;
     flex-direction: column;
-    align-items: center;
+  
 
   } 
  }

@@ -2,9 +2,11 @@
     background-color:  #F9F9FC;
     display: flex;
     flex-direction: column;
+  
     width: 100%;
 }
 .RefralDetails{
+    margin-top: 48px;
     font-family: 'Montserrat';
     font-size: 28px;
     font-weight: 600;
@@ -88,7 +90,7 @@
 
 }
 .referalHistory{
- text-align: center;
+ /* text-align: center; */
     font-weight: 600;
     font-size: 20px;
     font-family: "Montserrat";
@@ -192,7 +194,7 @@
         min-width: 100% !important;
     }
     .referalHistory{
-        font-size: 14px;
+        font-size: 20px;
        
     }
  }

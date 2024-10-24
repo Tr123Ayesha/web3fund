@@ -190,7 +190,7 @@ const Dashboard = ()=>{
                 <p className='graphpara2'>View the increase in Value of your NFTs</p>
               </div>
            
-  <button class="dropdown-button">
+  <button className="dropdown-button">
     Yearly
    <img className='arrow' src={arrowDown} alt="arrow"/>
   </button>
@@ -224,7 +224,7 @@ const Dashboard = ()=>{
                 <p className='graphpara2'>Total Fund Growth</p>
               </div>
            
-  <button class="dropdown-button">
+  <button className="dropdown-button">
     Yearly
    <img className='arrow' src={arrowDown} alt="arrow"/>
   </button>
@@ -264,12 +264,12 @@ const Dashboard = ()=>{
   onClick={handleClick}
   variant="outlined"
   sx={{
-
+width:'100%',
     display:'flex',
     justifyContent:"space-between",
     gap:"8px",
     fontFamily:"Montserrat",
-    padding: '15px 20px',
+    // padding: '15px 20px',
     borderRadius: '12px',
     color: '#6B7280',
     fontWeight:"500",
@@ -283,17 +283,18 @@ const Dashboard = ()=>{
  
 </Button>
                 <Button
+                
   aria-controls="simple-menu"
   aria-haspopup="true"
   onClick={handleClick}
   variant="outlined"
   sx={{
-
+    width:'100%',
     display:'flex',
     justifyContent:"space-between",
     gap:"8px",
     fontFamily:"Montserrat",
-    padding: '15px 20px',
+    // padding: '15px 20px',
     borderRadius: '12px',
     color: '#6B7280',
     fontWeight:"500",
