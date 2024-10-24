@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PersistentDrawerLeft from './components/sidebar/index';
+import Dashboard from './pages/dashboard';
+import Referral from './pages/referrals';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"; // Import Outlet and BrowserRouter
+const DashboardLayout = () => (
+  <>
+    <PersistentDrawerLeft showSidebar={true} style={{ overflowX: "hidden" }}>
+      <Outlet /> {/* Nested routes will render here */}
+    </PersistentDrawerLeft>
+  </>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Dashboard Layout route that wraps child routes */}
+        <Route path="/" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />  {/* Default route */}
+          <Route path="referrals" element={<Referral />} />
+            {/* Child route */}
+        </Route>
+        {/* Optional: Redirect any unknown path to home */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
+
   );
 }
 

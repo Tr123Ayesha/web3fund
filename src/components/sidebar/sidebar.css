@@ -1,0 +1,213 @@
+.body{
+    background-color: #f9f9fc;
+}
+.Web3Logo{
+    margin-right: 20px;
+    padding-top: 13px;
+}
+.sidebar{
+    flex-grow: 1; 
+}
+.SideBarIcon{
+    padding-top: 71px;
+    /* padding-left: 16px;   */
+}
+.SidebarContainer {
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+.SideBarIcon2{
+    padding-top: 32px;
+    /* padding-left: 16px; */
+}
+.generalMenu{
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 12px ;
+    line-height: 19.2px;
+    color: #667085;
+}
+.ListItemDivs{
+    display: flex;
+      gap: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-right: 8px;
+}
+.ListPicture {
+    width: 24px;
+    height: 24px;
+    padding-right: 12px;
+   
+}
+.css-cokf1l-MuiListItemIcon-root{
+    min-width: 32px !important;
+}
+.event-icon{
+    margin-right: 12px;
+}
+.SearchApp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 16px;
+    border-radius: 8px;
+    background-color: #F9F9FC;
+   margin-top: 16px;
+   margin-bottom: 16px;
+   margin-left: 4px;
+   height: 52px;
+   width: 35%;
+
+}
+.SearchApp:focus {
+    outline: none;
+    background-color: #F9F9FC;
+}
+.search::placeholder
+{
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.4px;
+    color:#667085;
+    background-color: #F9F9FC;
+   
+}
+.search {
+    border: none;
+    font-family:"Montserrat" ;
+    color:#667085;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.4px;
+    background-color: #F9F9FC;
+    width: 25%;
+}
+.search:focus {
+    outline: none;
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.4px;
+    background-color: #F9F9FC;
+}
+.searchIcon{
+    width: 24px;
+    height: 24px;
+}
+.fimage{
+    width: 47px;
+    height: 30px;
+}
+.switchWallet{
+    margin-top: 25px ;
+    margin-bottom: 25px;
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+    height: 34px;
+    border-radius: 8px;
+    background: var(--Evox-Blue, #0F68FF);
+    border: none;
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18.2px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.appbar2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 21.75px;
+    margin-bottom: 21.75px;
+    margin-right: 28px;
+}
+.setting{
+    margin-right: 16px;
+}
+.vertical-line {
+    height: 20px; 
+    width: 1px;
+    background-color: #F0F1F3; 
+ margin-top: 10.25px;
+ margin-bottom: 10.25px;
+ margin-right: 20px;
+  }
+.notification{
+margin-right: 20px;
+}
+.image{
+    width: 40.5px;
+    height: 40.5px;
+    margin-right: 20px;
+}
+.Logout{
+    display: flex;
+    padding-left: 16px;
+    align-items: center;
+    justify-content: start;
+    cursor: pointer;
+    margin-bottom: 20px; 
+    
+}
+.Logout p{
+    margin-left: 12px;
+   color: #F04A4A ; 
+   font-family: "Montserrat";
+   font-size: 14px;
+   font-weight: 500;
+   line-height: 16.8px;
+}
+@media screen and (max-width: 425px) {
+    .css-gsqi7y-MuiButtonBase-root-MuiIconButton-root{
+        margin-right: 0px !important;
+    }
+    .SearchApp {
+        
+        padding:5px 5px;
+
+       margin-left: 0;
+
+    
+    }
+    .setting{
+        margin-right: 8px;
+    }
+    .vertical-line {
+        height: 20px; 
+     margin-right: 8px;
+      }
+    .notification{
+    margin-right: 8px;
+    }
+    .css-1skc4pp-MuiToolbar-root{
+        padding-right:5px !important ;
+        padding-left: 5px !important;
+    }
+    .switchWallet{
+       
+       
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18.2px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .image{
+        width: 35.5px;
+        height: 35.5px;
+        margin-right: 10px;
+    }
+    .appbar2{
+      
+        margin-right: 10px;
+    }
+}

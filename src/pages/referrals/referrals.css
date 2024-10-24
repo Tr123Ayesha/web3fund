@@ -1,0 +1,198 @@
+.referral{
+    background-color:  #F9F9FC;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.RefralDetails{
+    font-family: 'Montserrat';
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36.4px;
+    color: #1D1F2C;
+}
+.referalP{
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.68px;
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+.referalId{
+    padding-left: 19px;
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-radius: 11px;
+    border: 1px solid #9DAAC740;
+    background-color: #F4F8FF;
+    height: 56px;
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.07px;
+    width: 100%;
+    margin-right: 35px;
+}
+.referalId:focus {
+   
+    outline: none;
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.07px;
+}
+.search::placeholder
+{
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.07px;
+   color: #000000;
+   
+}
+.share{
+    margin-top: 31px;
+    width: 15%;
+    height: 54px;
+    border-radius: 80px;
+    background-color: #0F68FF;
+    color: #FFFFFF;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    border: none;
+    margin-left: 30px;
+}
+.form{
+    display: flex;
+    flex-direction: row;
+}
+.formreferal{
+    width: 28%;
+}
+.Table{
+    margin-top: 32px;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 0 24px 0 24px;
+
+}
+.tableHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 0px 28px 0px;
+  
+
+}
+.referalHistory{
+ text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Montserrat";
+    line-height: 26px;
+}
+.css-czsps1-MuiTableHead-root{
+    background-color: #F9F9FC !important;
+    color: #667085 !important;
+}
+.css-to33az-MuiTableCell-root {
+    color: #667085 !important;
+}
+.css-14y13q2-MuiTableCell-root{
+    padding-top: 31px !important;
+    padding-bottom: 31px !important;
+    padding-left: 24px !important;
+    font-family: "Montserrat" !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 22.4px !important;
+    border-bottom: 1px solid #F0F1F3 !important;
+}
+.css-bmnu5q-MuiTableCell-root{
+    border-bottom: 1px solid #F0F1F3 !important;
+}
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   padding: 16px 0px 16px 0px;
+    align-items: center;
+   
+}
+.css-6phqnb-MuiTableRow-root{
+    border-bottom: 1px solid #F0F1F3 !important;
+}
+
+.footer p{
+    color:#667085 !important;
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 500;
+}
+.WeekCalendar{
+   
+    font-size:"14px" !important;
+   
+}
+@media (min-width: 425px) and (max-width: 768px) {
+    .form{
+       width: 100%;
+    }
+    .formreferal{
+        width: 40%;
+    }
+    .share{
+        width: 30%;
+    }
+    .footer p{
+        font-size: 10px;
+    }
+    .css-ptck8z-MuiButtonBase-root-MuiPaginationItem-root{
+        font-size: 10px !important;
+        min-width: 20px !important;
+    }
+
+       .WeekCalendar{
+      
+        font-size:"10px" !important;
+      
+    }
+    
+}
+@media (max-width: 424px) {
+    .form{
+        width: 100%;
+     }
+     .formreferal{
+         width: 55%;
+     }
+     .share{
+         width: 40%;
+     }
+     .footer{
+       
+       padding: 16px 10px;
+       width: 100%; 
+    }
+    
+    .footer p{
+        color:#667085 !important;
+        font-family: "Montserrat";
+        font-size: 10px;
+        font-weight: 500;
+    }
+    .css-1c5o7vy-MuiPagination-ul{
+        justify-content: flex-end;
+    }
+    .css-ptck8z-MuiButtonBase-root-MuiPaginationItem-root{
+        font-size: 10px !important;
+        min-width: 100% !important;
+    }
+    .referalHistory{
+        font-size: 14px;
+       
+    }
+ }
