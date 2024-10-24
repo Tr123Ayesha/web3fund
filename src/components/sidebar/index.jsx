@@ -31,6 +31,8 @@ import image from '../../assets/image.svg';
 import logout from '../../assets/logout.svg';
 import './sidebar.css';
 import { useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
 const drawerWidth = 264;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -115,7 +117,7 @@ export default function PersistentDrawerLeft({children}) {
   const [selectedGeneralIndex, setSelectedGeneralIndex] = React.useState(null); // State for General Menu
   const [selectedOtherIndex, setSelectedOtherIndex] = React.useState(null); // State for Other Menu
   const [open, setOpen] = React.useState(true);
-  
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -126,19 +128,19 @@ export default function PersistentDrawerLeft({children}) {
   };
 
   const sidebarItems = [
-    { text: "Dashboard", icon: dash, route: "/dashboard" },
-    { text: "Referrals", icon: profile, route: "/referrals" },
-    { text: "Latest News", icon: LatestNews, route: "/latest-news" },
-    { text: "Trade Web3Fund NFT", icon: box, route: "/nft" },
-    { text: "Chat", icon: Sms, route: "/chat" },
+    { text: "Dashboard", icon: dash, route: "/" },
+    { text: "Referrals", icon: profile, route: "referrals" },
+    { text: "Latest News", icon: LatestNews, route: "/" },
+    { text: "Trade Web3Fund NFT", icon: box, route: "/" },
+    { text: "Chat", icon: Sms, route: "/" },
   ];
 
   const otherItems = [
-    { text: "Help", icon: headphone, route: "/help" },
-    { text: "Feedback", icon: feedback, route: "/feedback" },
+    { text: "Help", icon: headphone, route: "/" },
+    { text: "Feedback", icon: feedback, route: "/" },
   ];
 
-  const handleListItemClick = (index, menuType) => {
+  const handleListItemClick = (index, item, menuType) => {
     if (menuType === "general") {
       setSelectedGeneralIndex(index);
       setSelectedOtherIndex(null); // Deselect the other menu
@@ -146,7 +148,11 @@ export default function PersistentDrawerLeft({children}) {
       setSelectedOtherIndex(index);
       setSelectedGeneralIndex(null); // Deselect the general menu
     }
+  
+    // Navigate to the route of the clicked item
+    navigate(item.route); // Corrected: Navigate to the item's route
   };
+  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -219,7 +225,7 @@ export default function PersistentDrawerLeft({children}) {
                 {sidebarItems.map((item, index) => (
                   <ListItem key={item.text} disablePadding>
                     <ListItemButton
-                      onClick={() => handleListItemClick(index, "general")}
+                    onClick={() => handleListItemClick(index, item, "general")} 
                       sx={{
                         "&:hover": {
                           backgroundColor: "#0F68FF",
@@ -256,7 +262,7 @@ export default function PersistentDrawerLeft({children}) {
                 {otherItems.map((item, index) => (
                   <ListItem key={item.text} disablePadding>
                     <ListItemButton
-                      onClick={() => handleListItemClick(index, "other")}
+                  onClick={() => handleListItemClick(index, item, "other")}
                       sx={{
                         "&:hover": {
                           backgroundColor: "#0F68FF",
