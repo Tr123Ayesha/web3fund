@@ -2,6 +2,7 @@ import React from 'react';
 import PersistentDrawerLeft from './components/sidebar/index';
 import Dashboard from './pages/dashboard';
 import Referral from './pages/referrals';
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"; // Import Outlet and BrowserRouter
 const DashboardLayout = () => (
   <>

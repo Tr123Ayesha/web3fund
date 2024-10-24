@@ -143,7 +143,7 @@ export default function PersistentDrawerLeft({children}) {
   const handleListItemClick = (index, item, menuType) => {
     if (menuType === "general") {
       setSelectedGeneralIndex(index);
-      setSelectedOtherIndex(null); // Deselect the other menu
+      setSelectedOtherIndex(null); 
     } else if (menuType === "other") {
       setSelectedOtherIndex(index);
       setSelectedGeneralIndex(null); // Deselect the general menu
