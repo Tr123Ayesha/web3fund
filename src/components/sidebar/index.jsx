@@ -301,7 +301,7 @@ export default function PersistentDrawerLeft({children}) {
           </div>
         </div>
       </Drawer>
-      <Main open={open}  isSmallScreen={isSmallScreen} sx={{ backgroundColor: "#F9F9FC", width: "100%", marginTop:" 38px" }}>
+      <Main open={open}  isSmallScreen={isSmallScreen} sx={{ backgroundColor: "#F9F9FC", width: "100%", marginTop:" 38px" ,  height: "100vh" ,}}>
         {children}
        
       </Main>
