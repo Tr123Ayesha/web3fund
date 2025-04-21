@@ -4,6 +4,8 @@ import Dashboard from './pages/dashboard';
 import Referral from './pages/referrals';
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom"; // Import Outlet and BrowserRouter
+import MainLive from './pages/LiveVideo/MainLive';
+import ConnectWallet from "./pages/connectWallet/connectwallet";
 const DashboardLayout = () => (
   <>
     <PersistentDrawerLeft showSidebar={true} style={{ overflowX: "hidden" }}>
@@ -24,6 +26,8 @@ function App() {
         </Route>
         {/* Optional: Redirect any unknown path to home */}
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/MainLive" element={<MainLive />}/>
+        <Route path='/connectWallet' element={<ConnectWallet />} /> {/* Connect Wallet route */}
       </Routes>
     </Router>
 

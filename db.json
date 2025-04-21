@@ -1,0 +1,13 @@
+{
+    "lineChartData": [
+      {
+        "name": "Deposits",
+        "data": [40, 10, 10, 9, 12, 14, 11, 20]
+      },
+      {
+        "name": "Total AUM",
+        "data": [2, 1, 7, 6, 8, 10, 9, 15]
+      }
+    ]
+  }
+  

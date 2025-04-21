@@ -1,5 +1,7 @@
 import './dashboard.css';
+import { useEffect } from 'react';
 import * as React from 'react';
+import axios from 'axios';
 import info from "../../assets/info-circle.svg";
 import nftblue from "../../assets/nftCardBlue.svg";
 import arrowDown from "../../assets/arrow-down.svg";
@@ -23,6 +25,8 @@ import Tab from '../../assets/Tab.svg';
 import sort from '../../assets/sort.svg';
 const Dashboard = ()=>{
   const [anchorEl, setAnchorEl] = useState(null);
+  const [lineChartData, setLineChartData] = useState([]);
+  const [barChartData, setBarChartData] = useState([]);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -80,16 +84,16 @@ const Dashboard = ()=>{
     }
   };
 
-  const barChartData = [
-    {
-      name: 'NFT Growth',
-      data: [30, 40, 45, 50, 49, 60, 70, 91], // Example data
-    },
-    {
-      name: 'Fund Growth',
-      data: [23, 33, 35, 55, 42, 55, 80, 95], // Example data
-    },
-  ];
+  // const barChartData = [
+  //   {
+  //     name: 'NFT Growth',
+  //     data: [30, 40, 45, 50, 49, 60, 70, 91], // Example data
+  //   },
+  //   {
+  //     name: 'Fund Growth',
+  //     data: [23, 33, 35, 55, 42, 55, 80, 95], // Example data
+  //   },
+  // ];
   const lineChartOptions = {
     chart: {
       type: 'line',
@@ -126,16 +130,37 @@ const Dashboard = ()=>{
     }
   };
 
-  const lineChartData = [
-    {
-      name: 'Deposits',
-      data: [4, 3, 10, 9, 12, 14, 11, 20], 
-    },
-    {
-      name: 'Total AUM',
-      data: [2, 1, 7, 6, 8, 10, 9, 15], 
-    },
-  ];
+  
+
+
+  useEffect(() => {
+    // Fetch the data from your mock API
+    axios.get('http://localhost:3001/lineChartData')
+      .then(response => {
+        const apiData = response.data; 
+        console.log("apiData",apiData);
+
+        // Map API data to chart-friendly format
+        const lineData = apiData.map(item => ({
+          name: item?.name,
+          data: item?.data
+        }));
+
+        // Set the lineChartData state
+        setLineChartData(lineData);
+console.log(lineData);
+        // If you want to use the same structure for bar chart, you can do similar mapping.
+        // Example of mapping to bar chart format (you may need to adjust for your case)
+        const barData = apiData.map(item => ({
+          name: item.name,
+          data: item.data
+        }));
+        setBarChartData(barData);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
     return(
       // <PersistentDrawerLeft>

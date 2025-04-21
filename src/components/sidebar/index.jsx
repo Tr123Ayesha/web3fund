@@ -35,29 +35,24 @@ import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 264;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open, isSmallScreen }) => ({
     flexGrow: 1,
-    height: "100%",
-    overflowX: "hidden",
     padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
+    width: '100%',
+    transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    // Only apply margin-left when it's not a small screen
-    marginLeft: isSmallScreen ? 0 : `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
+    marginLeft: open && !isSmallScreen ? 0 : isSmallScreen ? 0 : `-${drawerWidth}px`,
+    ...(open && !isSmallScreen && {
+      transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      marginLeft: 0,
-      fontFamily: "Montserrat",
     }),
   })
 );
-
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -74,46 +69,20 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-  backgroundColor: "white",
-  zIndex: "2",
 }));
 
-const AvatarTopDiv = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: theme.spacing(1),
-  right: theme.spacing(1),
-  zIndex: theme.zIndex.drawer + 1,
-  [theme.breakpoints.up("md")]: {
-    width: "100%",
-    minWidth: 768,
-  },
-  [theme.breakpoints.down("sm")]: {
-    top: theme.spacing(1),
-    left: theme.spacing(1),
-    right: "auto",
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "flex-end",
-
-    gap: theme.spacing(2),
-  },
-}));
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-
+  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: "space-between",
-  padding: "26px 24px",
-  borderBottom: "none",
-  zIndex: "2",
+  justifyContent: "flex-end",
 }));
 
 export default function PersistentDrawerLeft({children}) {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallScreen =  useMediaQuery('(max-width:1064px)');
   const [selectedGeneralIndex, setSelectedGeneralIndex] = React.useState(null); // State for General Menu
   const [selectedOtherIndex, setSelectedOtherIndex] = React.useState(null); // State for Other Menu
   const [open, setOpen] = React.useState(true);
