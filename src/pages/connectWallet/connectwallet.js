@@ -1,8 +1,9 @@
 import react from 'react';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 function ConnectWallet() {
+  const navigate = useNavigate();
     const [walletAddress, setWalletAddress] = useState('');
     const [WalletBalance, setWalletBalance] = useState('');
     const connectWallet = async () => {
@@ -10,8 +11,6 @@ function ConnectWallet() {
         if (typeof window.ethereum !== 'undefined') {
           try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            await window.ethereum.request({ method: 'eth_requestAccounts' });
-
             const account = accounts[0];
             setWalletAddress(account);
             const balance = await window.ethereum.request({
@@ -29,7 +28,9 @@ function ConnectWallet() {
           alert('MetaMask is not installed. Please install it to connect.');
         }
       };
-     
+ const sendMoney=()=>{
+  navigate('/sendmoney')
+ }
     return (
         <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
             <h1>Connect Your Wallet</h1>
@@ -38,6 +39,7 @@ function ConnectWallet() {
                 {walletAddress}
             </p>
             <p> The Current Balance is <span>{WalletBalance}</span></p>
+            <button onClick={sendMoney}> Send Money</button>
         </div>
     );
 }
