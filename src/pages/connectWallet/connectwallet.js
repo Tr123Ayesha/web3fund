@@ -1,7 +1,7 @@
 import react from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Web3 from 'web3';
 function ConnectWallet() {
   const navigate = useNavigate();
     const [walletAddress, setWalletAddress] = useState('');
@@ -13,6 +13,7 @@ function ConnectWallet() {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
             setWalletAddress(account);
+            const web3 = new Web3(window.ethereum);
             const balance = await window.ethereum.request({
                 method: 'eth_getBalance',
                 params: [account, 'latest'],
