@@ -10,6 +10,8 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@web3-react/core": "^8.2.3",
+    "@web3-react/injected-connector": "^6.0.7",
     "@zegocloud/zego-uikit-prebuilt": "^2.14.3-beta",
     "apexcharts": "^3.54.1",
     "axios": "^1.7.9",
