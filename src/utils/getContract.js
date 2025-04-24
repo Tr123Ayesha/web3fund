@@ -11,16 +11,13 @@ const BSC_TESTNET_PARAMS = {
     symbol: "BNB",
     decimals: 18
   },
-  rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
-  blockExplorerUrls: ["https://testnet.bscscan.com"]
+  rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"]
 };
 
 const getContract = async () => {
   if (!window.ethereum) {
     throw new Error("MetaMask not found");
   }
-
-  // Handle network switching more robustly
   try {
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
     
