@@ -35,8 +35,8 @@ function ConnectWallet() {
     } catch (error) {
       console.error("Connection error:", error);
      let errorMessage = error.message;
-      if (error.code === 4001) {
-        errorMessage = "Please connect your wallet to continue";
+     if (error.code === 4001) {
+    errorMessage= "Connect wallet please";
       } else if (error.message.includes('revert')) {
         errorMessage = "Transaction reverted. Contract may be paused or not initialized.";
       }
@@ -73,9 +73,8 @@ function ConnectWallet() {
       console.error("Transfer error:", error);
       let errorMessage = error.message;
       
-      // Handle different error types
       if (error.code === 4001) {
-        errorMessage = "Transaction rejected by user.";
+    setErrorMessage("🛑 Transaction rejected by user.");
       } else if (error.message.includes('revert')) {
         errorMessage = "Transfer failed. Make sure you have sufficient tokens.";
       } else if (error.message.includes("insufficient funds")) {
@@ -86,15 +85,17 @@ function ConnectWallet() {
     }
   };
   
-  
-
-  const sendMoney = () => {
-    navigate('/sendmoney');
-  };
+  // const sendMoney = () => {
+  //   navigate('/sendmoney');
+  // };
   const recipientAddress = "0x5edBf4B846CA94AcDf1CC62114b6118Af6D4E047"; 
 const amountToTransfer = "3"; 
 
+const mint= async(value) =>{
 
+
+
+}
 
   return (
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
@@ -105,11 +106,13 @@ const amountToTransfer = "3";
 
       <p>{walletAddress && `Wallet Address: ${walletAddress}`}</p>
       {/* <p>{walletBalance && `The Current ETH Balance is: ${walletBalance}`}</p> */}
-      <p>{tokenBalance && `The Current Token Balance is: ${tokenBalance} USDT`}</p>
+      <p style={{fontWeight:"700"}}>{tokenBalance && `The Current Token Balance is: ${tokenBalance} USDT`}</p>
 <div style={{display:"flex", gap:"20px"}}>
-      <button onClick={sendMoney}>Send Money</button>
+      {/* <button onClick={sendMoney}>Send Money</button> */}
       <button onClick={() => transferTokens(recipientAddress, amountToTransfer)}> Transfer USDT </button>
       </div>
+
+      <button onClick={()=>mint()} style={{marginTop:"20px"}}>Mint </button>
     </div>
   );
 }
