@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Web3 from 'web3';
 import getContract from '../../utils/getContract.js';
+import { useTheme } from '../../context/ThemeContext.js';
 
 function ConnectWallet() {
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [walletAddress, setWalletAddress] = useState('');
-  const [walletBalance, setWalletBalance] = useState('');
+  // const [walletBalance, setWalletBalance] = useState('');
   const [tokenBalance, setTokenBalance] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // Error message state
+  const [errorMessage, setErrorMessage] = useState(''); 
   const [tokenSymbol, setTokenSymbol] = useState('');
 
   const connectWallet = async () => {
@@ -84,20 +86,90 @@ function ConnectWallet() {
       setErrorMessage(errorMessage);
     }
   };
+
+  const ApproveIt = async (spender, value) => {
+    setErrorMessage(''); // Clear any previous error
   
-  // const sendMoney = () => {
-  //   navigate('/sendmoney');
-  // };
-  const recipientAddress = "0x5edBf4B846CA94AcDf1CC62114b6118Af6D4E047"; 
-const amountToTransfer = "3"; 
+    try {
+      // Initialize Web3 instance
+      const web3 = new Web3(window.ethereum); // Initialize Web3
+      const accounts = await window.ethereum.request({ method: "eth_accounts" });
+      const user = accounts[0];
+      setWalletAddress(user);
+  
+      // Load contract (make sure getContract() returns a valid contract)
+      const contract = await getContract(); // Ensure this is returning the correct contract instance
+      
+     
+  
+      const valueInWei = web3.utils.toWei(value.toString(), 'ether');
+      const gas = await contract.methods.approve(spender, valueInWei).estimateGas({ from: user });
+  
+      //Approve transaction
+      await contract.methods
+        .approve(spender, valueInWei);
+  
+      console.log("✅ Tokens approved successfully!");
+    } catch (error) {
+      console.error("Transfer error:", error);
+      let errorMessage = error.message;
+      
+      if (error.code === 4001) {
+    setErrorMessage("🛑 Transaction rejected by user.");
+      } else if (error.message.includes('revert')) {
+        errorMessage = "Transfer failed. Make sure you have sufficient tokens.";
+      } else if (error.message.includes("insufficient funds")) {
+        errorMessage = "Insufficient funds in the wallet.";
+      }
+  
+      setErrorMessage(errorMessage);
+    }
+  };
+  
+  const mint = async (value) => {
+    setErrorMessage('');
+  
+    try {
+      const web3 = new Web3(window.ethereum);
+      const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+      const user = accounts[0];
+  
+      const contract = await getContract(); // assume you already have this
+  
+      // Convert value to smallest unit (e.g., if value = 10 USDT, then it's 10 * 10^18)
+      const valueInWei = web3.utils.toWei(value.toString(), 'ether'); // hardcoded to 18 decimals
+  
+      // Estimate gas and call mint
+      const gas = await contract.methods.mint(valueInWei).estimateGas({ from: user });
+  
+      await contract.methods.mint(valueInWei).send({ from: user, gas });
+  
+      console.log("✅ Minted successfully!");
+    } catch (error) {
+      console.error("Minting error:", error);
+      let errorMessage = error.message;
+  
+      if (error.code === 4001) {
+        errorMessage = "Transaction rejected by user.";
+      } else if (error.message.includes('revert')) {
+        errorMessage = "Mint failed. You might not have permission.";
+      }
+  
+      setErrorMessage(errorMessage);
+    }
+  };
+  
 
-const mint= async(value) =>{
-
-
-
-}
-
+  const recipientAddress = "0x753ca43550cb67C48C7c89eea3928D5f15492723"; 
+const amountToTransfer = "10000";
   return (
+   
+
+<div className={`app ${theme}`} style={{height:"100vh"}}>
+      <h1 style={{margin:"0px"}}>Welcome to {theme === 'light' ? 'Light' : 'Dark'} Mode</h1>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+   
+   
     <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
       <h1>Connect Your Wallet</h1>
       <button onClick={connectWallet}>Connect Wallet</button>
@@ -106,15 +178,17 @@ const mint= async(value) =>{
 
       <p>{walletAddress && `Wallet Address: ${walletAddress}`}</p>
       {/* <p>{walletBalance && `The Current ETH Balance is: ${walletBalance}`}</p> */}
-      <p style={{fontWeight:"700"}}>{tokenBalance && `The Current Token Balance is: ${tokenBalance} USDT`}</p>
+      <p style={{fontWeight:"700"}}>{tokenBalance && `The Current Token Balance is: ${tokenBalance} ${tokenSymbol}`}</p>
 <div style={{display:"flex", gap:"20px"}}>
       {/* <button onClick={sendMoney}>Send Money</button> */}
       <button onClick={() => transferTokens(recipientAddress, amountToTransfer)}> Transfer USDT </button>
       </div>
 
-      <button onClick={()=>mint()} style={{marginTop:"20px"}}>Mint </button>
+      <button onClick={()=>mint(0.00001)} style={{marginTop:"20px"}}>Mint </button>
+
+      <button  style={{marginTop:"20px" , background:"Green", border:"none"}} onClick={()=>{ApproveIt(recipientAddress,amountToTransfer)}}>Approvee </button>
+    </div>
     </div>
   );
 }
-
 export default ConnectWallet;

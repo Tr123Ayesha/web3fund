@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-
 import MainLive from './pages/LiveVideo/MainLive';
 import ConnectWallet from "./pages/connectWallet/connectwallet";
 import SendMoney from './pages/SendMoney';
+import { ThemeProvider } from './context/ThemeContext';
+import ThreeDComponent from "./pages/three/three.js";
 const DashboardLayout = () => (
   <>
     <PersistentDrawerLeft showSidebar={true} style={{ overflowX: "hidden" }}>
@@ -17,23 +19,27 @@ const DashboardLayout = () => (
 
 function App() {
   return (
+    //theme provider is used for Dark and Light mode
+    <ThemeProvider>
     <Router>
       <Routes>
         {/* Dashboard Layout route that wraps child routes */}
         <Route path="/" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />  {/* Default route */}
+          <Route index element={<Dashboard />} /> 
           <Route path="referrals" element={<Referral />} />
             {/* Child route */}
         </Route>
         {/* Optional: Redirect any unknown path to home */}
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/MainLive" element={<MainLive />}/>
+        {/* connect Wallet is Basically BlockChain Integration with a usdt Token */}
         <Route path='/connectWallet' element={<ConnectWallet />} /> 
         <Route path='/sendmoney' element={<SendMoney />} />
-       
+        {/*this Route is for Animation and using Three.js that is animation Library */}
+       <Route path="/three" element={<ThreeDComponent />} />
       </Routes>
     </Router>
-
+    </ThemeProvider>
   );
 }
 
