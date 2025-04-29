@@ -15,6 +15,8 @@
     "@zegocloud/zego-uikit-prebuilt": "^2.14.3-beta",
     "apexcharts": "^3.54.1",
     "axios": "^1.7.9",
+    "gsap": "^3.12.7",
+    "lottie-react": "^2.4.1",
     "outlet": "^0.1.5",
     "react": "^18.3.1",
     "react-apexcharts": "^1.4.1",

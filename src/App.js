@@ -9,6 +9,7 @@ import ConnectWallet from "./pages/connectWallet/connectwallet";
 import SendMoney from './pages/SendMoney';
 import { ThemeProvider } from './context/ThemeContext';
 import ThreeDComponent from "./pages/three/three.js";
+import ScrollAnimation from "./pages/scrollAnimation.js";
 const DashboardLayout = () => (
   <>
     <PersistentDrawerLeft showSidebar={true} style={{ overflowX: "hidden" }}>
@@ -37,6 +38,7 @@ function App() {
         <Route path='/sendmoney' element={<SendMoney />} />
         {/*this Route is for Animation and using Three.js that is animation Library */}
        <Route path="/three" element={<ThreeDComponent />} />
+       <Route path="/scroll" element={<ScrollAnimation />} />
       </Routes>
     </Router>
     </ThemeProvider>
