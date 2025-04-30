@@ -38,7 +38,8 @@ function App() {
         <Route path='/sendmoney' element={<SendMoney />} />
         {/*this Route is for Animation and using Three.js that is animation Library */}
        <Route path="/three" element={<ThreeDComponent />} />
-       <Route path="/scroll" element={<ScrollAnimation />} />
+       {/*this Route is for a dummy 3d model animation*/}
+       <Route path="/3DModal" element={<ScrollAnimation />} />
       </Routes>
     </Router>
     </ThemeProvider>
