@@ -10,6 +10,7 @@ import SendMoney from './pages/SendMoney';
 import { ThemeProvider } from './context/ThemeContext';
 import ThreeDComponent from "./pages/three/three.js";
 import ScrollAnimation from "./pages/scrollAnimation.js";
+import LoginFormAnimation from "./pages/loginFormAnimation/animationLogin.js";
 const DashboardLayout = () => (
   <>
     <PersistentDrawerLeft showSidebar={true} style={{ overflowX: "hidden" }}>
@@ -40,6 +41,8 @@ function App() {
        <Route path="/three" element={<ThreeDComponent />} />
        {/*this Route is for a dummy 3d model animation*/}
        <Route path="/3DModal" element={<ScrollAnimation />} />
+         {/*this Route is for login animation*/}
+         <Route path="/LoginAnimation" element={<LoginFormAnimation />} />
       </Routes>
     </Router>
     </ThemeProvider>
